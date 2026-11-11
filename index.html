@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f6f4ee">
+  <meta name="description" content="Morrow — a thoughtful little shop for everyday favourites. A front-end shopping cart simulator.">
+  <title>Morrow — A little shop for everyday</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="announcement-bar">
+    A little something for your everyday <span aria-hidden="true">✳</span> Free shipping on orders over ₹999
+  </div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Morrow home">
+      <span class="brand-mark" aria-hidden="true">m.</span>
+      <span class="brand-name">morrow<span class="brand-period">.</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#shop">Shop all</a>
+      <a href="#shop" data-nav-category="Home">Home goods</a>
+      <a href="#shop" data-nav-category="Tech">Tech & tools</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button theme-toggle" id="themeToggle" type="button" aria-label="Switch to dark mode" title="Toggle colour theme">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+      </button>
+      <button class="icon-button wishlist-shortcut" id="wishlistShortcut" type="button" aria-label="Show your wishlist">
+        <span aria-hidden="true">♡</span><span class="action-label">Saved</span><span class="tiny-count" id="wishlistCount">0</span>
+      </button>
+      <button class="cart-trigger" id="openCart" type="button" aria-label="Open shopping bag, 0 items">
+        <span aria-hidden="true">Bag</span><span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+  <main id="home">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> GOOD THINGS, WELL CHOSEN</p>
+        <h1 id="heroTitle">Make room for<br><em>the everyday.</em></h1>
+        <p class="hero-description">Useful things, lovely details, and a few little joys. A considered collection for wherever life happens.</p>
+        <a class="button button-dark" href="#shop">Explore the collection <span aria-hidden="true">↗</span></a>
+        <div class="hero-note"><span class="note-star" aria-hidden="true">✳</span><span>Thoughtfully picked.<br>Easy to love.</span></div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=85" alt="A warm, neatly styled desk with stationery and everyday objects" fetchpriority="high">
+        <div class="hero-sticker"><span>THE</span><strong>little<br>things</strong><span>MATTER</span></div>
+        <div class="hero-caption">A slower kind of shopping <span>—</span> since 2024</div>
+      </div>
+    </section>
+    <section class="benefits-strip" aria-label="Shop benefits">
+      <div><span aria-hidden="true">✦</span> Carefully curated</div>
+      <div><span aria-hidden="true">⌁</span> Easy returns, 7 days</div>
+      <div><span aria-hidden="true">♡</span> Made for real life</div>
+      <div><span aria-hidden="true">♧</span> Free delivery over ₹999</div>
+    </section>
+    <section class="shop-section" id="shop" aria-labelledby="shopTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">A GOOD PLACE TO START</p>
+          <h2 id="shopTitle">Find your <em>favourite.</em></h2>
+        </div>
+        <p class="section-side-note">A few practical things.<br>And some just-because things.</p>
+      </div>
+      <div class="shop-toolbar">
+        <div class="search-wrap">
+          <label class="visually-hidden" for="searchInput">Search products</label>
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Looking for something?" autocomplete="off">
+          <button id="clearSearch" class="clear-search" type="button" aria-label="Clear search" hidden>×</button>
+        </div>
+        <div class="toolbar-selects">
+          <label class="visually-hidden" for="priceFilter">Filter by price</label>
+          <select id="priceFilter" aria-label="Filter by price">
+            <option value="all">All prices</option>
+            <option value="500">Under ₹500</option>
+            <option value="1000">Under ₹1,000</option>
+            <option value="2000">Under ₹2,000</option>
+          </select>
+          <label class="visually-hidden" for="sortSelect">Sort products</label>
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="featured">Sort: Featured</option>
+            <option value="low">Price: Low to high</option>
+            <option value="high">Price: High to low</option>
+            <option value="name">Name: A to Z</option>
+          </select>
+        </div>
+      </div>
+      <div class="category-row" id="categoryFilters" aria-label="Product categories">
+        <button class="category-chip active" type="button" data-category="All" aria-pressed="true">Everything</button>
+        <button class="category-chip" type="button" data-category="Home" aria-pressed="false">Home & living</button>
+        <button class="category-chip" type="button" data-category="Tech" aria-pressed="false">Tech</button>
+        <button class="category-chip" type="button" data-category="Style" aria-pressed="false">Style</button>
+        <button class="category-chip" type="button" data-category="Wellness" aria-pressed="false">Wellness</button>
+        <button class="category-chip" type="button" data-category="Stationery" aria-pressed="false">Stationery</button>
+      </div>
+      <div class="results-line">
+        <p id="resultsCount" aria-live="polite">Showing all pieces</p>
+        <button class="text-button" id="showAllProducts" type="button" hidden>← Back to all products</button>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite">
+        <!-- Product cards are created by script.js from the product list. -->
+      </div>
+      <div class="empty-state" id="noResults" hidden>
+        <span class="empty-illustration" aria-hidden="true">⌕</span>
+        <h3>Nothing on this shelf (yet).</h3>
+        <p>Try another search or clear a filter. Your next favourite might be one click away.</p>
+        <button class="button button-outline" id="resetFilters" type="button">Clear filters</button>
+      </div>
+    </section>
+    <section class="newsletter-section">
+      <div class="newsletter-icon" aria-hidden="true">✳</div>
+      <div>
+        <p class="eyebrow">A NOTE FROM MORROW</p>
+        <h2>Good finds, <em>occasionally.</em></h2>
+        <p>Our little updates, new arrivals, and the occasional reason to make a cup of tea.</p>
+      </div>
+      <form class="newsletter-form" id="newsletterForm">
+        <label class="visually-hidden" for="newsletterEmail">Email address</label>
+        <input id="newsletterEmail" type="email" placeholder="Your email address" required>
+        <button type="submit" aria-label="Join the list">Join us <span aria-hidden="true">→</span></button>
+      </form>
+      <p class="newsletter-message" id="newsletterMessage" aria-live="polite"></p>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#home"><span class="brand-mark">m.</span><span class="brand-name">morrow<span class="brand-period">.</span></span></a>
+    <p>Little things for the life you're living.</p>
+    <span class="footer-small">A front-end shopping demo · Made with care © 2026</span>
+  </footer>
+  <!-- The screen overlay is shared by the cart and checkout panels. -->
+  <div class="screen-overlay" id="screenOverlay" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true" inert>
+    <div class="drawer-header">
+      <div><p class="eyebrow">YOUR LITTLE FINDS</p><h2 id="cartTitle">Your bag <span id="drawerItemCount">(0)</span></h2></div>
+      <button class="close-button" id="closeCart" type="button" aria-label="Close shopping bag">×</button>
+    </div>
+    <div class="drawer-content" id="cartItems">
+      <!-- Cart contents are created by script.js. -->
+    </div>
+    <div class="drawer-footer" id="cartFooter">
+      <div class="shipping-progress-wrap"><p id="shippingMessage">You're ₹999 away from free shipping.</p><div class="shipping-progress"><span id="shippingProgress"></span></div></div>
+      <form class="promo-form" id="promoForm">
+        <label for="promoInput">Have a little code?</label>
+        <div class="promo-control"><input id="promoInput" type="text" placeholder="Enter promo code" autocomplete="off"><button type="submit">Apply</button></div>
+        <p class="promo-feedback" id="promoFeedback" aria-live="polite"></p>
+      </form>
+      <div class="price-row"><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div>
+      <div class="price-row discount-row" id="discountRow" hidden><span>Discount</span><strong id="cartDiscount">−₹0</strong></div>
+      <div class="price-row"><span>Delivery</span><strong id="cartShipping">₹0</strong></div>
+      <div class="price-row total-row"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+      <button class="button button-dark checkout-button" id="checkoutButton" type="button" disabled>Continue to checkout <span aria-hidden="true">→</span></button>
+      <p class="secure-note">♡ This is a demo checkout. No payment will be taken.</p>
+    </div>
+  </aside>
+  <section class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle" aria-hidden="true" inert>
+    <div class="modal-header">
+      <div><p class="eyebrow">ALMOST YOURS</p><h2 id="checkoutTitle">A few final details.</h2></div>
+      <button class="close-button" id="closeCheckout" type="button" aria-label="Close checkout">×</button>
+    </div>
+    <div class="checkout-layout">
+      <form id="checkoutForm" class="checkout-form" novalidate>
+        <p class="form-intro">Just the essentials. This is a pretend checkout, so please use sample details.</p>
+        <div class="form-grid">
+          <div class="field-group"><label for="customerName">Full name</label><input id="customerName" name="customerName" type="text" placeholder="Your name" autocomplete="name" required minlength="2"></div>
+          <div class="field-group"><label for="customerEmail">Email address</label><input id="customerEmail" name="customerEmail" type="email" placeholder="you@example.com" autocomplete="email" required></div>
+          <div class="field-group full-field"><label for="customerAddress">Delivery address</label><input id="customerAddress" name="customerAddress" type="text" placeholder="House / street / area" autocomplete="street-address" required minlength="5"></div>
+          <div class="field-group"><label for="customerCity">City</label><input id="customerCity" name="customerCity" type="text" placeholder="Your city" autocomplete="address-level2" required></div>
+          <div class="field-group"><label for="customerPin">PIN code</label><input id="customerPin" name="customerPin" type="text" inputmode="numeric" placeholder="6-digit PIN" autocomplete="postal-code" pattern="[0-9]{6}" maxlength="6" required></div>
+        </div>
+        <p class="form-error" id="checkoutError" role="alert"></p>
+        <button class="button button-dark place-order-button" type="submit">Place demo order <span aria-hidden="true">→</span></button>
+        <p class="secure-note">🔒 Demo only — no card details, real payments, or personal data are sent anywhere.</p>
+      </form>
+      <div class="checkout-summary"><h3>Order at a glance</h3><div id="checkoutSummaryItems"></div><div class="summary-total"><span>Estimated total</span><strong id="checkoutSummaryTotal">₹0</strong></div></div>
+    </div>
+  </section>
+  <section class="confirmation-modal" id="confirmationModal" role="dialog" aria-modal="true" aria-labelledby="confirmationTitle" aria-hidden="true" inert>
+    <button class="close-button confirmation-close" id="closeConfirmation" type="button" aria-label="Close confirmation">×</button>
+    <div class="confirmation-mark" aria-hidden="true">✓</div>
+    <p class="eyebrow">THAT'S A WRAP</p>
+    <h2 id="confirmationTitle">A little joy is<br><em>on its way.</em></h2>
+    <p class="confirmation-copy" id="confirmationCopy">Thanks for shopping with Morrow. Your demo order is confirmed.</p>
+    <div class="order-number" id="orderNumber">ORDER #MRW-000000</div>
+    <div class="confirmation-details" id="confirmationDetails"></div>
+    <button class="button button-dark" id="continueShopping" type="button">Back to the good stuff <span aria-hidden="true">→</span></button>
+    <p class="secure-note">This is a simulated order, not a real purchase.</p>
+  </section>
+  <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
