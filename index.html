@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Morrow - Online Shopping</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="announcement-bar">A little something for your everyday $ Free shipping over ₹999</div>
+    <header class="site-header">
+        <a class="brand" href="#home"><span class="brand-mark">m.</span><span class="brand-name">morrow<span
+                    class="brand-period">.</span></span></a>
+        <nav class="main-nav"><a href="#shop">Shop all</a>
+            <a href="#shop" data-nav-category="Home">Home goods</a><a href="#shop" data-nav-category="Tech">Tech &
+                tools</a>
+        </nav>
+        <div class="header-actions">
+            <button class="icon-button theme-toggle" id="themeToggle" type="button" aria-label="Change theme"><span
+                    class="theme-icon">☾</span></button>
+            <button class="icon-button" id="wishlistShortcut" type="button">♡ <span class="action-label">Saved</span>
+                <span class="tiny-count" id="wishlistCount">0</span></button>
+            <button class="cart-trigger" id="openCart" type="button">Bag <span class="cart-count"
+                    id="cartCount">0</span></button>
+        </div>
+    </header>
+    <main id="home">
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">GOOD THINGS, WELL CHOSEN</p>
+                <h1>Make room for<br><em>the everyday.</em></h1>
+                <p class="hero-description">Useful things, lovely details, and a few little joys. A considered
+                    collection for wherever life happens.</p>
+                <a class="button button-dark" href="#shop">Explore the collection ↗</a>
+                <p class="hero-note">✳ Thoughtfully picked. Easy to love.</p>
+            </div>
+            <div class="hero-visual">
+                <img src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1200&q=85"
+                    alt="A warm desk with stationery and everyday objects">
+                <div class="hero-sticker"><span>THE</span><strong>little<br>things</strong><span>MATTER</span></div>
+                <div class="hero-caption">A slower kind of shopping — since 2024</div>
+            </div>
+        </section>
+        <section class="benefits-strip">
+            <div>✦ Carefully curated</div>
+            <div>⌁ Easy returns, 7 days</div>
+            <div>♡ Made for real life</div>
+            <div>♧ Free delivery over ₹999</div>
+        </section>
+        <section class="shop-section" id="shop">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">A GOOD PLACE TO START</p>
+                    <h2>Find your <em>favourite.</em></h2>
+                </div>
+                <p class="section-side-note">A few practical things.<br>And some just-because things.</p>
+            </div>
+            <div class="shop-toolbar">
+                <div class="search-wrap">
+                    <input id="searchInput" type="search" placeholder="Looking for something?"
+                        aria-label="Search products"><button id="clearSearch" class="clear-search" type="button"
+                        hidden>×</button>
+                </div>
+                <div class="toolbar-selects">
+                    <select id="priceFilter" aria-label="Filter by price">
+                        <option value="all">All prices</option>
+                        <option value="500">Under ₹500</option>
+                        <option value="1000">Under ₹1,000</option>
+                        <option value="2000">Under ₹2,000</option>
+                    </select>
+                    <select id="sortSelect" aria-label="Sort products">
+                        <option value="featured">Sort: Featured</option>
+                        <option value="low">Price: Low to high</option>
+                        <option value="high">Price: High to low</option>
+                        <option value="name">Name: A to Z</option>
+                    </select>
+                </div>
+            </div>
+            <div class="category-row" id="categoryFilters">
+                <button class="category-chip active" data-category="All" type="button">Everything</button><button
+                    class="category-chip" data-category="Home" type="button">Home & living</button>
+                <button class="category-chip" data-category="Tech" type="button">Tech</button><button
+                    class="category-chip" data-category="Style" type="button">Style</button>
+                <button class="category-chip" data-category="Wellness" type="button">Wellness</button><button
+                    class="category-chip" data-category="Stationery" type="button">Stationery</button>
+            </div>
+            <div class="results-line">
+                <p id="resultsCount">Showing all products</p><button class="text-button" id="showAllProducts"
+                    type="button" hidden>Back to all products</button>
+            </div>
+            <div class="product-grid" id="productGrid"></div>
+            <div class="empty-state" id="noResults" hidden>
+                <span class="empty-illustration">⌕</span>
+                <h3>No products found.</h3>
+                <p>Try another search or clear the filters.</p>
+                <button class="button button-outline" id="resetFilters" type="button">Clear filters</button>
+            </div>
+        </section>
+        <section class="newsletter-section">
+            <div class="newsletter-icon">✳</div>
+            <div>
+                <p class="eyebrow">A NOTE FROM MORROW</p>
+                <h2>Good finds, <em>occasionally.</em></h2>
+                <p>New arrivals and little updates from our shop.</p>
+            </div>
+            <form class="newsletter-form" id="newsletterForm">
+                <input id="newsletterEmail" type="email" placeholder="Your email address" required><button
+                    type="submit">Join us →</button>
+            </form>
+            <p class="newsletter-message" id="newsletterMessage"></p>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <a class="brand footer-brand" href="#home"><span class="brand-mark">m.</span><span
+                class="brand-name">morrow<span class="brand-period">.</span></span></a>
+        <p>Little things for the life you're living.</p><span class="footer-small">A front-end shopping demo · ©
+            2026</span>
+    </footer>
+    <div class="screen-overlay" id="screenOverlay" hidden></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="drawer-header">
+            <div>
+                <p class="eyebrow">YOUR LITTLE FINDS</p>
+                <h2>Your bag <span id="drawerItemCount">(0)</span></h2>
+            </div>
+            <button class="close-button" id="closeCart" type="button">×</button>
+        </div>
+        <div class="drawer-content" id="cartItems"></div>
+        <div class="drawer-footer" id="cartFooter">
+            <div class="shipping-progress-wrap">
+                <p id="shippingMessage"></p>
+                <div class="shipping-progress"><span id="shippingProgress"></span></div>
+            </div>
+            <form class="promo-form" id="promoForm">
+                <label for="promoInput">Have a little code?</label>
+                <div class="promo-control"><input id="promoInput" type="text" placeholder="Enter promo code"><button
+                        type="submit">Apply</button></div>
+                <p class="promo-feedback" id="promoFeedback"></p>
+            </form>
+            <div class="price-row"><span>Subtotal</span><strong id="cartSubtotal">₹0</strong></div>
+            <div class="price-row discount-row" id="discountRow" hidden><span>Discount</span><strong
+                    id="cartDiscount">₹0</strong></div>
+            <div class="price-row"><span>Delivery</span><strong id="cartShipping">₹0</strong></div>
+            <div class="price-row total-row"><span>Total</span><strong id="cartTotal">₹0</strong></div>
+            <button class="button button-dark checkout-button" id="checkoutButton" type="button" disabled>Continue to
+                checkout →</button>
+            <p class="secure-note">Demo checkout only. No payment will be taken.</p>
+        </div>
+    </div>
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="modal-header">
+            <div>
+                <p class="eyebrow">ALMOST YOURS</p>
+                <h2 id="checkoutTitle">A few final details.</h2>
+            </div>
+            <button class="close-button" id="closeCheckout" type="button">×</button>
+        </div>
+        <div class="checkout-layout">
+            <form id="checkoutForm" class="checkout-form">
+                <p class="form-intro">Use sample details. This is only a demo order.</p>
+                <div class="form-grid">
+                    <div class="field-group"><label for="customerName">Full name</label><input id="customerName"
+                            type="text" placeholder="Your name" required minlength="2"></div>
+                    <div class="field-group"><label for="customerEmail">Email address</label><input id="customerEmail"
+                            type="email" placeholder="you@example.com" required></div>
+                    <div class="field-group full-field"><label for="customerAddress">Delivery address</label><input
+                            id="customerAddress" type="text" placeholder="House / street / area" required minlength="5">
+                    </div>
+                    <div class="field-group"><label for="customerCity">City</label><input id="customerCity" type="text"
+                            placeholder="Your city" required></div>
+                    <div class="field-group"><label for="customerPin">PIN code</label><input id="customerPin"
+                            type="text" inputmode="numeric" placeholder="6-digit PIN" pattern="[0-9]{6}" maxlength="6"
+                            required></div>
+                </div>
+                <p class="form-error" id="checkoutError"></p><button class="button button-dark place-order-button"
+                    type="submit">Place demo order →</button>
+                <p class="secure-note">No real payment or personal data is sent.</p>
+            </form>
+            <div class="checkout-summary">
+                <h3>Order at a glance</h3>
+                <div id="checkoutSummaryItems"></div>
+                <div class="summary-total"><span>Estimated total</span><strong id="checkoutSummaryTotal">₹0</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="confirmation-modal" id="confirmationModal">
+        <button class="close-button confirmation-close" id="closeConfirmation" type="button">×</button>
+        <div class="confirmation-mark">✓</div>
+        <p class="eyebrow">THAT'S A WRAP</p>
+        <h2 id="confirmationTitle">A little joy is<br><em>on its way.</em></h2>
+        <p class="confirmation-copy" id="confirmationCopy"></p>
+        <div class="order-number" id="orderNumber"></div>
+        <div class="confirmation-details" id="confirmationDetails"></div>
+        <button class="button button-dark" id="continueShopping" type="button">Back to shopping →</button>
+        <p class="secure-note">This is a simulated order, not a real purchase.</p>
+    </div>
+    <div class="toast-region" id="toastRegion"></div>
+</body>
+</html>
